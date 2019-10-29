@@ -1,25 +1,32 @@
-import { RegisterModule } from './register/register.module';
+import { HomeService } from './home/home.service';
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 import { AuthService } from './_services/auth.service';
-import { NavbarModule } from './nav-bar/nav-bar.module';
-import { AppValueModule } from './app-value/app-value.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    RegisterComponent,
+    HomeComponent,
+    NavBarComponent
   ],
   imports: [
-    AppValueModule,
+    HttpClientModule,
     BrowserModule,
-    NavbarModule,
-    RegisterModule
+    FormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    HomeService
   ],
   bootstrap: [AppComponent]
 })
