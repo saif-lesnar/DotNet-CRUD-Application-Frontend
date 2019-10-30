@@ -8,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit{
     model: any = {};
+    userName : any;
     constructor( private authService : AuthService){
 
     }
     ngOnInit(){
-
+        this.userName = this.authService.userInfo()['unique_name'] ? this.authService.userInfo()['unique_name'] : '';
     }
     login(){
         console.log(this.model);
@@ -23,8 +24,7 @@ export class NavBarComponent implements OnInit{
         })
     }
     loggedIn(){
-        const token = localStorage.getItem('token');
-        return !!token;
+        return this.authService.isLoggedIn();
     }
     logout(){
         localStorage.removeItem('token');

@@ -1,3 +1,4 @@
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { HomeService } from './home/home.service';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     AuthService,
-    HomeService
+    HomeService,
+    ErrorInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })
