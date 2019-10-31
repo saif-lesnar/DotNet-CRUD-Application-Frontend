@@ -6,9 +6,15 @@ import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
-    {path : 'home', component : HomeComponent },
-    {path : 'list', component : ListComponent ,canActivate:[AuthGuard]},
-    {path : 'member', component : MemberComponent, canActivate:[AuthGuard]},
-    {path : 'message', component : MessageComponent, canActivate:[AuthGuard]},
-    {path : '**', redirectTo : 'home' , pathMatch : 'full'},
+    {path : '', component : HomeComponent },
+    {path: '',
+        runGuardsAndResolvers : 'always',
+        canActivate : [AuthGuard],
+        children : [
+            {path : 'list', component : ListComponent ,canActivate:[AuthGuard]},
+            {path : 'member', component : MemberComponent, canActivate:[AuthGuard]},
+            {path : 'message', component : MessageComponent, canActivate:[AuthGuard]}
+        ]
+    },
+    {path : '**', redirectTo : '' , pathMatch : 'full'},
 ];
