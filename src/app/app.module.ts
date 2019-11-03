@@ -1,4 +1,6 @@
-import { MemberComponent } from './member/members.component';
+import { MemberCardComponent } from './member/member-card/member-card.component';
+import { UserService } from './_services/user.service';
+import { MemberComponent } from './member/member-list/members.component';
 import { ListComponent } from './lists/list.component';
 import { MessageComponent } from './messages/messages.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -27,7 +29,8 @@ import { appRoutes } from './routes';
     NavBarComponent,
     MessageComponent,
     ListComponent,
-    MemberComponent
+    MemberComponent,
+    MemberCardComponent
   ],
   imports: [
     MatIconModule,
@@ -42,7 +45,8 @@ import { appRoutes } from './routes';
   providers: [
     AuthService,
     HomeService,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

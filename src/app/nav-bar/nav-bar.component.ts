@@ -28,7 +28,7 @@ export class NavBarComponent implements OnInit{
         },error =>{
             console.log("Failed to login");
         }, ()=>{
-            this.router.navigate(['/member']);
+            this.router.navigate(['/members']);
         })
     }
     loggedIn(){
