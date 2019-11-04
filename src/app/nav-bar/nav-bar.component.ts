@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit{
         this.getUserName();
     }
     getUserName(){
-        this.userName = this.authService.userInfo()['unique_name'] ? this.authService.userInfo()['unique_name'] : '';
+        this.userName = this.authService.userInfo() ? this.authService.userInfo()['unique_name'] : ' ';
     }
     login(){
         console.log(this.model);
