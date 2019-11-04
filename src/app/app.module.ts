@@ -1,3 +1,4 @@
+import { MemberDetailComponent } from './member/member-detail/member-detail.component';
 import { MemberCardComponent } from './member/member-card/member-card.component';
 import { UserService } from './_services/user.service';
 import { MemberComponent } from './member/member-list/members.component';
@@ -34,7 +35,8 @@ export function tokenGetter(){
     MessageComponent,
     ListComponent,
     MemberComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberDetailComponent
   ],
   imports: [
     JwtModule.forRoot({
