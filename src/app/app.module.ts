@@ -19,7 +19,11 @@ import { MatButtonModule, MatMenuModule, MatIconModule } from '@angular/material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter(){
+  return localStorage.getItem('token');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +37,13 @@ import { appRoutes } from './routes';
     MemberCardComponent
   ],
   imports: [
+    JwtModule.forRoot({
+      config : {
+        tokenGetter : tokenGetter,
+        whitelistedDomains : ['localhost:44350'],
+        blacklistedRoutes : ['localhost:44350/api/auth']
+      }
+    }),
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
