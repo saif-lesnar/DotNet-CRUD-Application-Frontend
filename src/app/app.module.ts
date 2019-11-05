@@ -1,3 +1,4 @@
+import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
 import { MemberCardComponent } from './member/member-card/member-card.component';
@@ -64,7 +65,8 @@ export function tokenGetter(){
     HomeService,
     ErrorInterceptorProvider,
     UserService,
-    MemberDetailResolver
+    MemberDetailResolver,
+    MemberListResolver
   ],
   bootstrap: [AppComponent]
 })
