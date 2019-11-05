@@ -1,3 +1,5 @@
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
@@ -40,7 +42,8 @@ export function tokenGetter(){
     ListComponent,
     MemberComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     NgxGalleryModule,
@@ -68,7 +71,8 @@ export function tokenGetter(){
     ErrorInterceptorProvider,
     UserService,
     MemberDetailResolver,
-    MemberListResolver
+    MemberListResolver,
+    MemberEditResolver
   ],
   bootstrap: [AppComponent]
 })
