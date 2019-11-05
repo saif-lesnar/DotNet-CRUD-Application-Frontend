@@ -1,3 +1,4 @@
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
 import { MemberCardComponent } from './member/member-card/member-card.component';
 import { UserService } from './_services/user.service';
@@ -12,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -39,6 +41,8 @@ export function tokenGetter(){
     MemberDetailComponent
   ],
   imports: [
+    BsDropdownModule,
+    TabsModule.forRoot(),
     JwtModule.forRoot({
       config : {
         tokenGetter : tokenGetter,
@@ -59,7 +63,8 @@ export function tokenGetter(){
     AuthService,
     HomeService,
     ErrorInterceptorProvider,
-    UserService
+    UserService,
+    MemberDetailResolver
   ],
   bootstrap: [AppComponent]
 })
