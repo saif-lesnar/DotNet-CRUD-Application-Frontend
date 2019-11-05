@@ -15,6 +15,7 @@ import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -42,6 +43,7 @@ export function tokenGetter(){
     MemberDetailComponent
   ],
   imports: [
+    NgxGalleryModule,
     BsDropdownModule,
     TabsModule.forRoot(),
     JwtModule.forRoot({

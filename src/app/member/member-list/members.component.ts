@@ -18,7 +18,6 @@ export class MemberComponent implements OnInit{
         private route : ActivatedRoute) {
     }
     loadUsers(){
-        debugger;
         this.route.data.subscribe(data =>{
             this.users = data['users'];
         });
