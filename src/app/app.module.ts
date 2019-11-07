@@ -9,7 +9,6 @@ import { MemberComponent } from './member/member-list/members.component';
 import { ListComponent } from './lists/list.component';
 import { MessageComponent } from './messages/messages.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { HomeService } from './home/home.service';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -67,7 +66,6 @@ export function tokenGetter(){
   ],
   providers: [
     AuthService,
-    HomeService,
     ErrorInterceptorProvider,
     UserService,
     MemberDetailResolver,
