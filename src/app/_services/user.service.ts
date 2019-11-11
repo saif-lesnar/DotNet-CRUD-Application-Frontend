@@ -1,3 +1,4 @@
+import { Photo } from './../_models/photo';
 import { User } from './../_models/user';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -23,5 +24,8 @@ export class UserService{
     }
     updateUser(id : number, user : User){
         return this.http.put(this.baseUrl+'user/' + id, user);
+    }
+    setMainPhoto(userId : number, photoId : number){
+        return this.http.post(this.baseUrl+'user/'+userId+ '/photos/'+photoId+'/setMain', {});
     }
 }
