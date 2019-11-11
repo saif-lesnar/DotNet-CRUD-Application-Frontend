@@ -36,4 +36,7 @@ export class MemberEditComponent implements OnInit{
             console.log("Error updating user");
         })
     }
+    updateMainPhoto(photoUrl){
+        this.user['photoUrl'] = photoUrl;
+    }
 }

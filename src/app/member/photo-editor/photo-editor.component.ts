@@ -1,6 +1,6 @@
 import { environment } from './../../../environments/environment';
 import { AuthService } from './../../_services/auth.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Photo } from 'src/app/_models/photo';
 import { FileUploader } from 'ng2-file-upload';
 import { UserService } from 'src/app/_services/user.service';
@@ -11,9 +11,11 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class PhotoEditorComponent implements OnInit{
     @Input() photos : Photo[];
+    @Output() getMemberPhotoChange = new EventEmitter<string>();
      uploader:FileUploader;
      hasBaseDropZoneOver:boolean = false;
      baseUrl = environment.apiUrl;
+     currentPhoto : Photo;
      /**
       *
       */
@@ -57,7 +59,10 @@ export class PhotoEditorComponent implements OnInit{
     }
     setMainPhoto(photo : Photo){
         this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(()=>{
-            console.log("succesfully updated photo");
+            this.currentPhoto = this.photos.filter(p=>p.isMain === true)[0];
+            this.currentPhoto.isMain = false;
+            photo.isMain = true;
+            this.getMemberPhotoChange.emit(photo.url);
         }, error =>{
             console.log("failed to set main photo");            
         });
