@@ -67,4 +67,13 @@ export class PhotoEditorComponent implements OnInit{
             console.log("failed to set main photo");            
         });
     }
+    deletePhoto(photo : Photo){
+        debugger;
+        this.userService.deletePhoto(this.authService.decodedToken.nameid, photo.id).subscribe(()=>{
+            this.photos = this.photos.filter(item => item.id !== photo.id)
+            console.log("Photo deleted");
+        }, error=>{
+            console.log("Failed to delete photo");
+        })
+    }
 }
