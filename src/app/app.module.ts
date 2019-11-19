@@ -10,7 +10,7 @@ import { MemberComponent } from './member/member-list/members.component';
 import { ListComponent } from './lists/list.component';
 import { MessageComponent } from './messages/messages.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './_services/auth.service';
@@ -48,6 +48,7 @@ export function tokenGetter(){
     PhotoEditorComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     FileUploadModule,
     NgxGalleryModule,
     BsDropdownModule,
