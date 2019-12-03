@@ -1,20 +1,24 @@
-FROM node:8.11.2-alpine as node
+FROM node:10.15.0-alpine as node
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
+ADD ./package*.json ./
 
 RUN npm i npm@latest -g
-
-RUN npm install
+RUN npm install -g grunt-cli
+#RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm i
+RUN npm run build:ci
+RUN ls /app/dist
 
-# Stage 2
-FROM nginx:1.13.12-alpine
 
-COPY --from=node /usr/src/app/dist /usr/share/nginx/html
-
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+FROM node:10.15.0-alpine
+WORKDIR /app
+COPY --from=node /app/dist/ /app
+RUN apk update
+RUN apk add ca-certificates wget && rm -rf /var/cache/apk/*
+EXPOSE 80
+CMD [ "node", "server.js" ]
