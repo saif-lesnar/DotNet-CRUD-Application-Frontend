@@ -11,7 +11,7 @@ RUN npm install -g grunt-cli
 COPY . .
 
 RUN npm i
-# RUN npm run build:ci
+RUN npm run build
 RUN ls /app/dist
 
 
